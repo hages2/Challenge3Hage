@@ -8,6 +8,19 @@ if (characterLength < 8) {
 } else if (characterLength > 128) {
   alert("Your password cannot be longer than 128 characters.")
 } else {
+  writePassword()
+}
+
+// Write password to the #password input
+function writePassword() {
+  var password = generatePassword();
+  var passwordText = document.querySelector("#password");
+  passwordText.value = password;
+
+}
+
+function generatePassword() {
+
   //character types (say whether or not to include)- lowercase, uppercase, numeric, and/or special characters
   var characterLower = window.confirm("Click OK to confirm lowercase characters.")
   var characterUpper = window.confirm("Click OK to confirm uppercase characters.")
@@ -49,21 +62,11 @@ if (characterLength < 8) {
     finalPassword = finalPassword + randomCharacter
 
   }
-
-  console.log("Final password is: ")
-  console.log(finalPassword)
+  return finalPassword
 }
+
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
-
-  passwordText.value = password;
-
-}
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
